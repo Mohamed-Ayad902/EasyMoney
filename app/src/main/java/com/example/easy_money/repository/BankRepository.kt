@@ -8,12 +8,18 @@ interface BankRepository {
 
     suspend fun insertUser(user: User)
 
+    suspend fun updateUser(user: User)
+
     fun getAllUsers(): Flow<List<User>>
+
+    fun getUserById(id: Int): Flow<User>
+
+    fun getUsersExcept(id: Int): Flow<List<User>>
 
     suspend fun insertTransaction(transaction: Transaction)
 
     fun getAllTransactions(): Flow<List<Transaction>>
 
-    fun isFirstTime():Boolean
+    fun isFirstTime(): Boolean
 
 }

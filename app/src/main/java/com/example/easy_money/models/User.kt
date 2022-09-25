@@ -12,5 +12,5 @@ data class User(
     val address: String,
     val phone: String,
     val image: Int,
-    val balance: Int,
+    var balance: Int,
 )

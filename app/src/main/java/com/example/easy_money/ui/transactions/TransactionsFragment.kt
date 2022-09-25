@@ -1,6 +1,7 @@
-package com.example.easy_money.ui.home
+package com.example.easy_money.ui.transactions
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,43 +11,31 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.easy_money.R
-import com.example.easy_money.adapters.UsersAdapter
-import com.example.easy_money.databinding.FragmentHomeBinding
-import com.example.easy_money.models.User
+import com.example.easy_money.adapters.TransactionsAdapter
+import com.example.easy_money.databinding.FragmentTransactionsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-private const val TAG = "HomeFragment mohamed"
-
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class TransactionsFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
-    private lateinit var usersAdapter: UsersAdapter
-    private val viewModel: HomeViewModel by viewModels()
+    private lateinit var binding: FragmentTransactionsBinding
+    private lateinit var transactionsAdapter: TransactionsAdapter
+    private val viewModel: TransactionsViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        binding = FragmentTransactionsBinding.inflate(layoutInflater, container, false)
         binding.recyclerView.apply {
+            transactionsAdapter = TransactionsAdapter()
             layoutManager = LinearLayoutManager(requireContext())
-            usersAdapter = UsersAdapter(object : UsersAdapter.OnClickListener {
-                override fun OnClick(user: User) {
-                    findNavController().navigate(
-                        HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
-                            user.id
-                        )
-                    )
-                }
-            })
-            adapter = usersAdapter
+            adapter = transactionsAdapter
         }
         return binding.root
     }
@@ -54,13 +43,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnTransactions.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_transactionsFragment) }
-
-        viewModel.getAllUsers().collectLatest(viewLifecycleOwner) {
-            usersAdapter.differ.submitList(it)
+        viewModel.getAllTransactions().collectLatest(viewLifecycleOwner) {
+            Log.d("mohamed", "onViewCreated: $it")
+            transactionsAdapter.differ.submitList(it)
+            it.forEach { transaction -> Log.d("mohamed", "onViewCreated: $transaction\n") }
         }
 
     }
+
 
 }
 

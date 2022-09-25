@@ -30,7 +30,7 @@ class HomeViewModel @Inject constructor(private val repository: BankRepositoryIm
                 "mohamed.ayad7474@gmail.com",
                 "Giza,Egypt",
                 "01289303016",
-                R.drawable.ic_launcher_foreground,
+                R.drawable.me,
                 9999999
             )
         )
@@ -42,7 +42,7 @@ class HomeViewModel @Inject constructor(private val repository: BankRepositoryIm
                 "sergio_r4@gmail.com",
                 "Madrid,Spain",
                 "01234567895",
-                R.drawable.ic_launcher_foreground,
+                R.drawable.ramos,
                 444444
             )
         )
@@ -54,7 +54,7 @@ class HomeViewModel @Inject constructor(private val repository: BankRepositoryIm
                 "elon_musk503@gmail.com",
                 "Canada",
                 "0122200111",
-                R.drawable.ic_launcher_foreground,
+                R.drawable.elon,
                 750000
             )
         )
@@ -66,7 +66,7 @@ class HomeViewModel @Inject constructor(private val repository: BankRepositoryIm
                 "beckham202@gmail.com",
                 "England",
                 "0174158892",
-                R.drawable.ic_launcher_foreground,
+                R.drawable.beckham,
                 175000
             )
         )
@@ -78,7 +78,7 @@ class HomeViewModel @Inject constructor(private val repository: BankRepositoryIm
                 "cr7_don@gmail.com",
                 "Madeira,Portugal",
                 "0777152790",
-                R.drawable.ic_launcher_foreground,
+                R.drawable.ronaldo,
                 777777
             )
         )

@@ -12,10 +12,13 @@
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_transactionsFragment"
+            app:destination="@id/transactionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.easy_money.ui.DetailsFragment"
+        android:name="com.example.easy_money.ui.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
         <action
@@ -27,19 +30,23 @@
     </fragment>
     <fragment
         android:id="@+id/transferFragment"
-        android:name="com.example.easy_money.ui.TransferFragment"
+        android:name="com.example.easy_money.ui.transfer.TransferFragment"
         android:label="fragment_transfer"
         tools:layout="@layout/fragment_transfer" >
         <action
             android:id="@+id/action_transferFragment_to_transactionsFragment"
-            app:destination="@id/transactionsFragment" />
+            app:destination="@id/transactionsFragment"
+            app:popUpTo="@id/homeFragment" />
         <argument
             android:name="balance"
+            app:argType="integer" />
+        <argument
+            android:name="senderId"
             app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/transactionsFragment"
-        android:name="com.example.easy_money.ui.TransactionsFragment"
+        android:name="com.example.easy_money.ui.transactions.TransactionsFragment"
         android:label="fragment_transactions"
         tools:layout="@layout/fragment_transactions" />
 </navigation>

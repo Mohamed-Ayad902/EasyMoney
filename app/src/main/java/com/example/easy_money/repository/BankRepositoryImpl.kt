@@ -14,7 +14,13 @@ class BankRepositoryImpl @Inject constructor(
 
     override suspend fun insertUser(user: User) = dao.insertUser(user)
 
+    override suspend fun updateUser(user: User) = dao.updateUser(user)
+
     override fun getAllUsers(): Flow<List<User>> = dao.getAllUsers()
+
+    override fun getUserById(id: Int) = dao.getUserById(id)
+
+    override fun getUsersExcept(id: Int): Flow<List<User>> = dao.getUsersExcept(id)
 
     override suspend fun insertTransaction(transaction: Transaction) =
         dao.insertTransaction(transaction)
